@@ -1,0 +1,49 @@
+defaults:
+  - model: mnist
+  - _self_
+
+rng_seed: 31415
+
+interactive: true
+
+dataset_name: mnist # [cifar10]
+model_name: ${dataset_name}
+
+val_epoch_interval: 1
+save_epoch_interval: 5
+viz_epoch_interval: 1
+
+n_epochs: 10
+init_from: scratch
+device_type: cuda
+torch_compile: false
+enable_tf32: true
+clip_grad_norm_1: true
+autocast_dtype: bf16
+
+dataloader:
+  batch_size: 64
+  num_workers: 4
+  pin_memory: true
+  drop_last: true
+
+optimizer:
+  type: adamw
+  lr: 2e-4
+  betas: [0.9, 0.95]
+  weight_decay: 0.01
+  eps: 1e-8
+  fused: true
+
+logging:
+  log_dir: ./logs
+  wandb:
+    enable: false
+    project: vae
+
+hydra:
+  job:
+    name: ${model_name}-${now_ist:%d-%m-%y-%H%M%S}
+  run:
+    dir: ${logging.log_dir}/${hydra.job.name}
+  output_subdir: config

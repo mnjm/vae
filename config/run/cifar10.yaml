@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - override /model: cifar10
+
+dataset_name: cifar10
+
+n_epochs: 300
+val_epoch_interval: 10
+viz_epoch_interval: 10
+save_epoch_interval: 10

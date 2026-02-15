@@ -1,0 +1,10 @@
+name: "cifar10-vae"
+input_size: [3, 32, 32]
+latent_dim: 256
+conv_chls: [64, 128, 256]
+conv_kernel_sizes: [4, 4, 4]
+conv_strides: [2, 2, 2]
+conv_paddings: [1, 1, 1]
+act_fn: relu
+kl_weight: 2e-3
+recon_loss_type: l1
