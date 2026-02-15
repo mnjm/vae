@@ -1,0 +1,10 @@
+name: "mnist-vae"
+input_size: [1, 28, 28]
+latent_dim: 20
+conv_chls: [32, 64]
+conv_kernel_sizes: [4, 4]
+conv_strides: [2, 2]
+conv_paddings: [1, 1]
+act_fn: relu
+kl_weight: 5e-4
+recon_loss_type: l2
